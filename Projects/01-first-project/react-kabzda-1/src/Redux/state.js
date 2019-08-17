@@ -1,3 +1,6 @@
+
+
+
 let store = {
   _state: {
     profilePage: {
@@ -18,7 +21,8 @@ let store = {
         { id: "1", name: "Maxim" },
         { id: "2", name: "Yanettka" },
         { id: "3", name: "Zaur" }
-      ]
+      ],
+      newMessage:''
     }
   },
 
@@ -33,8 +37,24 @@ let store = {
     console.log("Hello");
   },
 
+ 
 
-  
+
+  dispatchMessage(action) {
+    if(action.type === 'ADD-MESSAGE') {
+    let newMessage = {
+      id: 109,
+      message: this._state.messagePage.newMessage
+    }
+    this._state.messagePage.messages.push(newMessage);
+    this._callSubscriber(this._state);
+  } 
+  else if(action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+    this._state.messagePage.newMessage = action.newMessage
+  }
+
+},
+
 
   dispatch(action) {
     if (action.type === "ADD-POST") {
@@ -50,13 +70,9 @@ let store = {
       this._callSubscriber(this._state);
     }
   }
-};
-
-export const addPostActionCreator = () => {
-  return {
-    type: 'ADD-POST',
-  }
 }
+
+
 export const UpdateNewPostText = (text) => {
   return {
     type:'UPDATE-NEW-POST-TEXT',
@@ -64,6 +80,30 @@ export const UpdateNewPostText = (text) => {
   }
 }
 
+
+export const addPostActionCreator = () => {
+  return {
+    type: 'ADD-POST',
+  }
+};
+
+
+
+
+export const addMessageActionCreator = () => {
+  return {
+    type: 'ADD-MESSAGE',
+  
+}
+};
+
+export const UpdateNewMessageText = (text) => {
+  return {
+    type: 'UPDATE-NEW-MESSAGE-TEXT',
+    newMessage:text
+  }
+};
 window.store = store;
 
 export default store;
+
