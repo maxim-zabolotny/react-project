@@ -1,11 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT =  'UPDATE-NEW-POST-TEXT';
-
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-
-
-
+import profileReducer from './profile-reduser';
+import dialogsReducer from './dialogs-reduser';
 
 let store = {
   _state: {
@@ -45,71 +39,21 @@ let store = {
  
 
   dispatch(action) {
-    if(action.type === ADD_MESSAGE) {
 
-      let dialogs = {
-        id: 6,
-        name: 'Dimon'
-      }
-  
-      let newMessage = {
-        id: 109,
-        message: this._state.messagePage.newMessage
-      }
-      this._state.messagePage.dialogs.push(dialogs);
-      this._state.messagePage.messages.push(newMessage);
-      this._callSubscriber(this._state);
-    } 
-    else if(action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.messagePage.newMessage = action.newMessage
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagePage = dialogsReducer(this._state.messagePage, action);
 
-   else if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        like_counts: 0
-      };
-      this._state.profilePage.post.push(newPost);
-      this._callSubscriber(this._state); // Перересовываем всё дерево
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newPost; // Обновляем значение В стэйте
-      this._callSubscriber(this._state);
-    }
+    this._callSubscriber(this._state);
   }
 }
 
 
-export const UpdateNewPostText = (text) => {
-  return {
-    type:'UPDATE-NEW-POST-TEXT',
-    newPost: text
-  }
-}
-
-
-export const addPostActionCreator = () => {
-  return {
-    type: 'ADD-POST',
-  }
-};
 
 
 
 
-export const addMessageActionCreator = () => {
-  return {
-    type: 'ADD-MESSAGE',
-  
-}
-};
 
-export const UpdateNewMessageText = (text) => {
-  return {
-    type: 'UPDATE-NEW-MESSAGE-TEXT',
-    newMessage:text
-  }
-};
+
 window.store = store;
 
 export default store;
