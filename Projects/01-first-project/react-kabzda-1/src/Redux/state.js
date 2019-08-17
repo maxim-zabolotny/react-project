@@ -33,6 +33,9 @@ let store = {
     console.log("Hello");
   },
 
+
+  
+
   dispatch(action) {
     if (action.type === "ADD-POST") {
       let newPost = {
@@ -48,6 +51,18 @@ let store = {
     }
   }
 };
+
+export const addPostActionCreator = () => {
+  return {
+    type: 'ADD-POST',
+  }
+}
+export const UpdateNewPostText = (text) => {
+  return {
+    type:'UPDATE-NEW-POST-TEXT',
+    newPost: text
+  }
+}
 
 window.store = store;
 
