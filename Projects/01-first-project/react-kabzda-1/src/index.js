@@ -1,5 +1,5 @@
 
-import store from './Redux/store';
+import store from './Redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -25,8 +25,8 @@ serviceWorker.unregister();
 
 rerenderEntriesTree(store.getState());
 
-store.subscribe(rerenderEntriesTree);
-
-    
-debugger
+store.subscribe(() => {
+    let state = store.getState()
+    rerenderEntriesTree();
+});    
 

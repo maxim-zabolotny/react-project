@@ -51,6 +51,5 @@ let onMessageChange = () => {
       </div>
     </div>
   );
-};
-debugger;
+}
 export default Dialogs;
