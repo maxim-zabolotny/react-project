@@ -20,7 +20,6 @@ let initialState = {
                     like_counts: 0
                   };
                   state.post.push(newPost);
-                  state.newPostText = '';
                   return state;    
 
         case  UPDATE_NEW_POST_TEXT:
