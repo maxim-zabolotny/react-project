@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsComponent from "./components/Dialogs/DialogsComponent";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -16,11 +16,10 @@ const App = (props) => {
         <Nav />
         <div class='app-wrapper-content'>
           
-          <Route path='/profile' render={ () => <Profile 
-           state={props.state.profileReducer} 
-           dispatch={props.dispatch}
-           />} />
-          <Route path='/dialogs' render={ () => <Dialogs  state={props.state.dialogsReducer} dispatch={props.dispatch}/>} />
+          <Route path='/profile' render={ () =>
+           <Profile store = {props.store} />} />
+          <Route path='/dialogs' render={ () => 
+          <DialogsComponent store = {props.store}/>} />
           <Route path='/news' render={ () => <News />} />
           <Route path='/music' render={ () => <Music />}/>
           <Route path='/settings' render={ () => <Settings className="settings"/>} />
