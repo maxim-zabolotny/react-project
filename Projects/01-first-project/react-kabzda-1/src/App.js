@@ -8,8 +8,10 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {Route} from 'react-router-dom';
+import Users from "./components/Users/Users";
 
 const App = (props) => {
+  
   return (
       <div className="app-wrapper">
         <Header />
@@ -20,6 +22,7 @@ const App = (props) => {
            <Profile />} />
           <Route path='/dialogs' render={ () => 
           <DialogsComponent />} />
+          <Route path='users' render={() => <Users/>} />
           <Route path='/news' render={ () => <News />} />
           <Route path='/music' render={ () => <Music />}/>
           <Route path='/settings' render={ () => <Settings className="settings"/>} />
@@ -31,6 +34,3 @@ const App = (props) => {
 
 
 export default App;
-
-
-

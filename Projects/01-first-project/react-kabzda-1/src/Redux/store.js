@@ -1,6 +1,7 @@
 import profileReducer from './profile-reduser';
 import dialogsReducer from './dialogs-reduser';
 
+
 let store = {
   _state: {
     profilePage: {
@@ -10,7 +11,6 @@ let store = {
       ],
       newPostText: "Hello"
     },
-
     messagePage: {
       messages: [
         { id: "1", message: "Hi" },
