@@ -43,7 +43,7 @@ let store = {
     this._state.profilePage = profileReducer(this._state.profilePage, action);
     this._state.messagePage = dialogsReducer(this._state.messagePage, action);
 
-    this._callSubscriber(this._state);
+    this._callSubscriber( this._state);
   }
 }
 
@@ -54,7 +54,6 @@ let store = {
 
 
 
-window.store = store;
 
 export default store;
 
